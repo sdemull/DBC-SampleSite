@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The DeWitt Batting Center | DeWitt, Michigan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0d1f3c;
+      --navy2:  #162847;
+      --red:    #c0172a;
+      --red2:   #e01f35;
+      --white:  #f5f5f0;
+      --silver: #b8bfc9;
+      --gold:   #d4a843;
+      --text:   #1a1a2e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,31,60,0.97);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      border-bottom: 2px solid var(--red);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+    }
+    .nav-logo span { color: var(--red2); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.45rem 1.2rem;
+      border-radius: 3px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red2) !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(13,31,60,0.92) 0%, rgba(13,31,60,0.75) 50%, rgba(192,23,42,0.55) 100%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.015) 40px,
+          rgba(255,255,255,0.015) 80px
+        ),
+        radial-gradient(ellipse at 70% 50%, #1a3a6b 0%, #0d1f3c 60%);
+      display: flex; align-items: center;
+      padding: 100px 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Stitching lines background texture */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 75% 45%, rgba(192,23,42,0.18) 0%, transparent 55%),
+        radial-gradient(circle at 20% 70%, rgba(212,168,67,0.08) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    /* Big decorative number */
+    .hero::after {
+      content: '⚾';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(14rem, 30vw, 28rem);
+      opacity: 0.04;
+      pointer-events: none;
+      filter: blur(1px);
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: block; width: 28px; height: 2px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.92;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent { color: var(--red2); }
+    .hero h1 .thin {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 0.55em;
+      color: var(--silver);
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--silver);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2.2rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+      box-shadow: 0 4px 20px rgba(192,23,42,0.45);
+    }
+    .btn-primary:hover {
+      background: var(--red2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(192,23,42,0.55);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-logo-wrap {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-logo-wrap img {
+      width: clamp(180px, 22vw, 300px);
+      filter: drop-shadow(0 8px 40px rgba(0,0,0,0.6));
+      animation: floatLogo 4s ease-in-out infinite;
+    }
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--red);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .stat-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 2.5rem;
+    }
+    .stat-item + .stat-item {
+      border-left: 1px solid rgba(255,255,255,0.25);
+    }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.3;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--red);
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-tag::before {
+      content: '';
+      display: block; width: 24px; height: 2px;
+      background: var(--red);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 0.95;
+      color: var(--navy);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .section-title .accent { color: var(--red); }
+
+    .section-lead {
+      font-size: 1.05rem;
+      color: #555;
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: #f0f0ea; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 2.25rem 2rem;
+      border-top: 4px solid var(--navy);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .service-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 0.65rem;
+    }
+    .service-card p {
+      font-size: 0.92rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ── BOOK ── */
+    #book {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #book::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 61px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 60px,
+          rgba(255,255,255,0.015) 60px,
+          rgba(255,255,255,0.015) 61px
+        );
+      pointer-events: none;
+    }
+
+    .book-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+    }
+
+    .book-left .section-tag { color: var(--gold); }
+    .book-left .section-tag::before { background: var(--gold); }
+    .book-left .section-title { color: var(--white); }
+    .book-left .section-title .accent { color: var(--red2); }
+    .book-left .section-lead { color: var(--silver); }
+
+    .book-notes {
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .book-note {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--silver);
+      line-height: 1.5;
+    }
+    .book-note-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Calendly widget placeholder */
+    .calendly-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 580px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .calendly-placeholder-icon { font-size: 3rem; opacity: 0.4; }
+    .calendly-placeholder-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+    }
+    .calendly-placeholder-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.2);
+      font-style: italic;
+      max-width: 240px;
+      line-height: 1.5;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--white);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .about-visual {
+      background:
+        linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, var(--red) 100%);
+      border-radius: 8px;
+      aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 6rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(13,31,60,0.3);
+    }
+    .about-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.03) 20px,
+        rgba(255,255,255,0.03) 40px
+      );
+    }
+    .about-visual-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: rgba(255,255,255,0.12);
+      text-align: center;
+      line-height: 1;
+      position: absolute;
+      inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.05em;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 1.5rem; right: 1.5rem;
+      background: var(--red);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .about-content .section-title { margin-bottom: 1.5rem; }
+    .about-list {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 0.85rem;
+    }
+    .about-list li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #444;
+    }
+    .about-list li::before {
+      content: '▸';
+      color: var(--red);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FAQ ── */
+    #faq { background: #f0f0ea; }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 1.75rem;
+      border-left: 3px solid var(--red);
+    }
+    .faq-item h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-left .section-title { color: var(--white); }
+    .contact-left .section-tag { color: var(--gold); }
+    .contact-left .section-tag::before { background: var(--gold); }
+
+    .contact-items {
+      margin-top: 2.5rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-item-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .contact-item-val {
+      font-size: 0.95rem;
+      color: var(--silver);
+      line-height: 1.5;
+    }
+
+    .contact-social {
+      margin-top: 2rem;
+      display: flex; gap: 0.75rem;
+    }
+    .social-link {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+    .social-link:hover { background: var(--red); }
+
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--red2);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--navy2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #07111f;
+      padding: 1.75rem 2rem;
+      text-align: center;
+      border-top: 2px solid var(--red);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: 0.08em;
+    }
+    .footer-brand span { color: var(--red2); }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #555;
+    }
+    .footer-links {
+      display: flex; gap: 1.5rem; list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--silver); }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-logo-wrap { display: none; }
+      .hero-sub { margin: 0 auto 2.5rem; }
+      .hero-actions { justify-content: center; }
+      .hero-tag { justify-content: center; }
+      .book-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .stat-item { padding: 0 1.25rem; }
+      .stat-num { font-size: 1.5rem; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .stats-bar { flex-wrap: wrap; gap: 1rem; }
+      .stat-item + .stat-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">The <span>DeWitt</span><br>Batting Center</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#book" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-tag">DeWitt, Michigan</div>
+        <h1>
+          <span class="thin">Step into the</span>
+          <span class="accent">Cage.</span><br>
+          Elevate<br>Your Game.
+        </h1>
+        <p class="hero-sub">
+          Mid-Michigan's premier indoor hitting facility for baseball and softball players of all ages and skill levels. Year-round training, anytime.
+        </p>
+        <div class="hero-actions">
+          <a href="#book" class="btn btn-primary">Book a Cage</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+      </div>
+      <div class="hero-logo-wrap">
+        <img src="fe926fb5910ba384e24b3851cc4b7aa492bd1dc9.png" alt="The DeWitt Batting Center logo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div>
+        <div class="stat-num">Baseball</div>
+        <div class="stat-label">& Softball</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div>
+        <div class="stat-num">All Ages</div>
+        <div class="stat-label">Youth to Adult</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div>
+        <div class="stat-num">Year-Round</div>
+        <div class="stat-label">Indoor Facility</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div>
+        <div class="stat-num">Easy</div>
+        <div class="stat-label">Online Booking</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">What We Offer</div>
+        <h2 class="section-title">Train Like You <span class="accent">Mean It</span></h2>
+        <p class="section-lead">From open cage rentals to private instruction, we have everything you need to sharpen your swing and build confidence at the plate.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-icon">⚾</span>
+          <h3>Cage Rentals</h3>
+          <p>Rent a cage by the hour for individual practice, team workouts, or family sessions. Available for both baseball and softball. No membership required — just book online and show up ready to hit.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-icon">🥎</span>
+          <h3>Private Lessons</h3>
+          <p>Work one-on-one with an experienced hitting instructor to fix mechanics, improve pitch recognition, and build a swing you can trust under pressure. All skill levels welcome.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-icon">👥</span>
+          <h3>Group & Team Sessions</h3>
+          <p>Book multiple cages for your travel team, rec league, or school group. We can accommodate teams of all sizes with flexible scheduling and competitive group rates.</p>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <span class="service-icon">🏆</span>
+          <h3>Birthday & Events</h3>
+          <p>Make your next birthday party or team event unforgettable. We'll set up the cages and let the kids (and adults) swing away. Contact us for custom event packages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book">
+    <div class="section-inner">
+      <div class="book-inner">
+        <div class="book-left reveal">
+          <div class="section-tag">Reserve Your Time</div>
+          <h2 class="section-title">Book a <span class="accent">Session</span></h2>
+          <p class="section-lead">Select your date, pick your cage, and secure your spot in minutes. Online booking is open 24/7.</p>
+          <div class="book-notes">
+            <div class="book-note">
+              <span class="book-note-icon">✅</span>
+              <span>Instant confirmation — no back-and-forth calls</span>
+            </div>
+            <div class="book-note">
+              <span class="book-note-icon">🔄</span>
+              <span>Easy cancellation and rescheduling</span>
+            </div>
+            <div class="book-note">
+              <span class="book-note-icon">💳</span>
+              <span>Secure payment at time of booking</span>
+            </div>
+            <div class="book-note">
+              <span class="book-note-icon">📱</span>
+              <span>Reminder sent automatically before your session</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <!-- 
+            CALENDLY EMBED — Replace the placeholder below with your Calendly inline embed code.
+            Example:
+            <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-USERNAME" style="min-width:320px;height:580px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          -->
+          <div class="calendly-box">
+            <div class="calendly-placeholder-icon">📅</div>
+            <div class="calendly-placeholder-text">Calendly Booking</div>
+            <div class="calendly-placeholder-sub">Your scheduling widget will appear here once your Calendly account is connected.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-visual-text">DeWitt<br>Batting<br>Center</div>
+          <div class="about-badge">⚾ DeWitt, MI</div>
+        </div>
+        <div class="about-content reveal reveal-delay-2">
+          <div class="section-tag">Our Story</div>
+          <h2 class="section-title">Built for <span class="accent">Players</span>,<br>By Players</h2>
+          <p class="section-lead">
+            The DeWitt Batting Center was created to give Mid-Michigan athletes a dedicated space to develop their skills year-round — rain, snow, or shine. Whether you're a 7-year-old picking up a bat for the first time or a high schooler trying to earn a college roster spot, this is your facility.
+          </p>
+          <ul class="about-list">
+            <li>Baseball and softball cages — separate equipment for each</li>
+            <li>Clean, climate-controlled indoor environment</li>
+            <li>Flexible hours to fit school and practice schedules</li>
+            <li>Friendly, knowledgeable staff on-site</li>
+            <li>Located in DeWitt Township — easy access from the Lansing area</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="reveal">
+        <div class="section-tag">Common Questions</div>
+        <h2 class="section-title">FAQ</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal reveal-delay-1">
+          <h4>Do I need to bring my own equipment?</h4>
+          <p>Yes, players should bring their own bat and batting helmet. We recommend bringing your own batting gloves as well. Balls are provided for machine-pitch cages.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <h4>How far in advance should I book?</h4>
+          <p>We recommend booking at least 24–48 hours ahead, especially for weekend slots which fill quickly. Same-day booking is available based on cage availability.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <h4>What ages are the cages appropriate for?</h4>
+          <p>We welcome players of all ages — from tee-ballers to adults. Cage settings and pitching machine speeds can be adjusted to fit any skill level.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <h4>Can I cancel or reschedule my booking?</h4>
+          <p>Yes. Cancellations and reschedules are accepted up to 24 hours before your session. Please use the link in your confirmation email or contact us directly.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <h4>Do you offer lessons for beginners?</h4>
+          <p>Absolutely. Our instructors work with players at every level, including complete beginners. Private lessons are a great way to build a strong foundation early.</p>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <h4>Is there parking available?</h4>
+          <p>Yes, free parking is available on-site. We're conveniently located in DeWitt Township with easy access from surrounding communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="contact-left reveal">
+          <div class="section-tag">Get In Touch</div>
+          <h2 class="section-title" style="color:var(--white);">We'd Love to<br><span style="color:var(--red2);">Hear From You</span></h2>
+          <p style="color:var(--silver); font-size:1rem; line-height:1.7; margin-top:1rem; max-width:420px;">
+            Questions about booking, group rates, lessons, or events? Reach out and we'll get back to you quickly.
+          </p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-val">DeWitt Township, Michigan<br><span style="font-size:0.8rem; color:#666;">Exact address provided at booking</span></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📘</div>
+              <div>
+                <div class="contact-item-label">Follow Us</div>
+                <div class="contact-item-val">Find us on Facebook for hours, updates, and promotions</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🕐</div>
+              <div>
+                <div class="contact-item-label">Hours</div>
+                <div class="contact-item-val">See availability when booking online</div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="https://www.facebook.com/share/17zzMZ5Khu/?mibextid=wwXIfr" target="_blank" class="social-link" title="Facebook">📘</a>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2">
+          <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="John" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="john@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" placeholder="(517) 555-0100" />
+            </div>
+            <div class="form-group">
+              <label for="subject">I'm asking about…</label>
+              <select id="subject">
+                <option value="">Select a topic</option>
+                <option>Cage Rental</option>
+                <option>Private Lessons</option>
+                <option>Group / Team Booking</option>
+                <option>Birthday Party / Event</option>
+                <option>Pricing</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us what you need…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem;">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">The <span>DeWitt</span> Batting Center</div>
+      <div class="footer-copy">© 2025 The DeWitt Batting Center · DeWitt, Michigan</div>
+      <ul class="footer-links">
+        <li><a href="#book">Book Now</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit (placeholder)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#1a6b3a';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
